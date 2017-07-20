@@ -8,6 +8,9 @@
       <h1>{{ product.productName }}</h1>
       <div class = 'well'>
         <h3> Rating: {{ product.productRating }} </h3>
+        <form action='/products/{{ product.productID }}?_method=DELETE' method='POST'>
+          <button class='btn btn-danger'>Delete</button>
+        </form>
       </div>
 
     </div>

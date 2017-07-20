@@ -11,7 +11,8 @@ function Product(name,rating,id){
 module.exports= {
 
 addProduct: function(name,rating){
-    var tempProduct = new Product(name,rating,data.length);
+    if(!name){throw 'Name Is Required'}
+    var tempProduct = new Product(name,rating,data.length+1);
     data.push(tempProduct);
   },
 
@@ -28,9 +29,9 @@ getProduct: function(id){
     return 'no such product';
   },
 
-deleteProduct: function(name){
+deleteProduct: function(id){
     for (var i=0;i<data.length;i++){
-      if(data[i].productName===name){
+      if(data[i].productID===id){
         data.splice(i,1);
       }
     }

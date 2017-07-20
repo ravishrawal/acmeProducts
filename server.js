@@ -8,6 +8,8 @@ app.set('view engine', 'html');
 app.engine('html', swig.renderFile);
 
 app.use('/vendor', express.static(path.join(__dirname,'node_modules')));
+app.use(require('body-parser').urlencoded({ extended: false }));
+app.use(require('method-override')('_method'));   //looks in POST for things like ?_method=DELETE
 
 app.use('/',function(req,res,next){
   console.log(req.url);
@@ -15,12 +17,14 @@ app.use('/',function(req,res,next){
 })
 
 app.get('/',function(req,res,next) {
-  res.render('index', { bestProduct: db.highestRatedProduct().productName });
+  res.render('index', { bestProduct: db.highestRatedProduct() });
 })
 
 app.use('/products',require('./routes/products'));
 
-
+app.use(function(err,req,res,next) {
+  res.render('error', { error:err })
+})
 
 var port = process.env.PORT || 3000;
 
