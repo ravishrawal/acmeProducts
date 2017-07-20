@@ -18,13 +18,7 @@ app.get('/',function(req,res,next) {
   res.render('index', { bestProduct: db.highestRatedProduct().productName });
 })
 
-app.get('/products',function(req,res,next) {
-  res.render('products', { productArray: db.getProducts() });
-})
-
-app.get('/products/:id',function(req,res,next) {
-  res.render('product', { productArray: db.getProduct(+req.params.id) });
-})
+app.use('/products',require('./routes/products'));
 
 
 
