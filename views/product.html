@@ -1,0 +1,17 @@
+<html>
+  <head>
+    <link rel='stylesheet' href='/vendor/bootstrap/dist/css/bootstrap.css'/>
+  </head>
+  <body>
+    <div class = 'container'>
+
+      <h1>{{ product.productName }}</h1>
+      <div class = 'well'>
+        Our Highest Rated Product Is <a href='/products/{{ product.productID }}'>{{ bestProduct }}</a>. <a href='/products'>See All.</a>
+      </div>
+
+    </div>
+
+  </body>
+
+</html>
