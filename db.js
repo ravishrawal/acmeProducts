@@ -1,8 +1,12 @@
-var data =[new Product('Coffee',6,1),new Product('Tea',4,2),new Product('Beer',8,3)];
+var data =[
+  new Product('Coffee',6,1),
+  new Product('Tea',4,2),
+  new Product('Beer',8,3)
+];
 
 
-function Product(name,rating,id){
-  this.productName=name;
+function Product(name, rating, id){
+  this.productName = name;
   this.productRating=rating;
   this.productID=id;
 }
@@ -12,8 +16,8 @@ module.exports= {
 
 addProduct: function(name,rating){
     if(!name){throw 'Name Is Required'}
-    var tempProduct = new Product(name,rating,data.length+1);
-    data.push(tempProduct);
+    var product = new Product(name,rating,data.length+1);
+    data.push(product);
   },
 
 getProducts: function(){
